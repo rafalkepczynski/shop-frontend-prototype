@@ -1,5 +1,5 @@
 <template>
   <div class="container">
-    Strona główna
+    O nas
   </div>
 </template>
