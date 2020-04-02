@@ -1,6 +1,6 @@
-# shop-frontend-prototype
+# Shop frontend prototype
 
-> Prototype of online shop
+This repository contains a small frontend prototype built in Nuxt that we made as a university project.
 
 ## Build Setup
 
