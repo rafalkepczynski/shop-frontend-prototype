@@ -23,6 +23,13 @@ export default {
   */
   loading: { color: '#fff' },
   /*
+  ** Router settings
+  */
+  router: {
+    base: '/shop-frontend-prototype/'
+  },
+  /*
+  /*
   ** Global CSS
   */
   css: [
