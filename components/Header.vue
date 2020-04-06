@@ -35,7 +35,7 @@ header {
     display: flex;
     flex-direction: row;
 
-    padding: 0;
+    padding: 0 15px;
 
     a {
       display: inline-block;
