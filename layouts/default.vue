@@ -49,6 +49,8 @@ body,
   flex-direction: column;
   align-items: stretch;
 
+  background: #f3f3f3;
+
   & > * {
     flex: 1;
   }
