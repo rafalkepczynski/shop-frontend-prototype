@@ -10,8 +10,17 @@
       <n-link to="/">
         Strona główna
       </n-link>
+      <n-link to="/asortyment">
+        Asortyment
+      </n-link>
+      <n-link to="/kontakt">
+        Kontakt
+      </n-link>
       <n-link to="/o-nas">
         O nas
+      </n-link>
+      <n-link to="/koszyk">
+        Koszyk
       </n-link>
     </nav>
   </header>
