@@ -21,7 +21,7 @@ export default {
         name: 'Brak nazwy',
         price: '0',
         discountedPrice: false,
-        image: 'cover.png',
+        image: require('../assets/cover.png'),
         description: 'Brak opisu'
       })
     }
