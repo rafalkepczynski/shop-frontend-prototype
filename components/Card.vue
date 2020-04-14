@@ -3,8 +3,8 @@
     <img :src="product.image">
     <h3>
       <small v-if="product.discountedPrice">
-        <span class="new-price">{{product.discountedPrice}} zł</span>
-        <span class="old-price">{{product.price}} zł</span>
+        <span class="new-price">{{ product.discountedPrice }} zł</span>
+        <span class="old-price">{{ product.price }} zł</span>
       </small>
       <small v-else>{{ product.price }} zł</small>
       {{ product.name }}

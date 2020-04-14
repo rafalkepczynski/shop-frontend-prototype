@@ -1,6 +1,8 @@
 <template>
   <div class="container grid">
-    <Card v-for="(product, n) in products" :key="n" :product="product" />
+    <nuxt-link v-for="(product, slug) in products" :key="slug" :to="`/produkt/${slug}`">
+      <Card :product="product" />
+    </nuxt-link>
   </div>
 </template>
 
@@ -24,5 +26,10 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px 20px;
+
+  a {
+    text-decoration: none;
+    color: initial;
+  }
 }
 </style>
