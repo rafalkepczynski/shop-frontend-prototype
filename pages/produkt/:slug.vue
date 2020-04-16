@@ -5,7 +5,7 @@
       <p>Taki produkt nie istnieje</p>
     </template>
     <template v-else>
-      <h1>{{product.name}}</h1>
+      <h1>{{ product.name }}</h1>
       <p>...</p>
     </template>
   </div>
