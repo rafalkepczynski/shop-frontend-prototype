@@ -2,10 +2,10 @@
   <div class="container">
     <h2>Napopularniejsze produkty</h2>
     <div class="container grid">
-    <nuxt-link v-for="(product, slug) in products" :key="slug" :to="`/produkt/${slug}`">
-      <Card :product="product" />
-    </nuxt-link>
-  </div>
+      <nuxt-link v-for="(product, slug) in products" :key="slug" :to="`/produkt/${slug}`">
+        <Card :product="product" />
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
