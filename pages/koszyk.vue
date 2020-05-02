@@ -2,42 +2,51 @@
   <div class="container">
     <h1>Koszyk</h1>
 
-    <div class="checkout-products">
-      <div v-for="product in products" :key="product.slug" class="product">
-        <div class="product-image">
-          <img :src="product.image">
-        </div>
-        <div class="product-name">
-          {{ product.name }}
-        </div>
-        <div class="product-amount">
-          <div class="btn-minus">
-            -
+    <p v-if="products.length == 0">
+      Brak produktów w koszyku!
+    </p>
+    <template v-else>
+      <div class="checkout-products">
+        <div v-for="product in products" :key="product.slug" class="product">
+          <div class="product-image">
+            <img :src="product.image">
           </div>
-          {{ product.amount }}
-          <div class="btn-plus">
-            +
+          <div class="product-name">
+            {{ product.name }}
+            <small>Ref: {{ product.ref }}</small>
           </div>
-        </div>
-        <div v-if="product.discountedPrice" class="product-price">
-          <div class="new-price">
-            {{ product.discountedPrice }} zł
-          </div>
-          <div class="old-price">
-            {{ product.price }} zł
-          </div>
-        </div>
-        <div v-else class="product-price">
-          {{ product.price }} zł
-        </div>
-      </div>
-    </div>
+          <div class="product-amount">
+            <div class="btns">
+              <div class="btn btn-plus" @click="incrementProductAmount(product.slug)">
+                +
+              </div>
+              <div class="btn btn-minus" @click="decrementProductAmount(product.slug)">
+                -
+              </div>
+            </div>
 
-    <div style="text-align: right; margin-top: 30px">
-      <div class="btn-cta">
-        Zamów
+            {{ product.amount }}
+          </div>
+          <div v-if="product.discountedPrice" class="product-price">
+            <div class="new-price">
+              {{ product.discountedPrice * product.amount }} zł
+            </div>
+            <div class="old-price">
+              {{ product.price * product.amount }} zł
+            </div>
+          </div>
+          <div v-else class="product-price">
+            {{ product.price * product.amount }} zł
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div style="text-align: right; margin-top: 30px">
+        <div class="btn branded">
+          Zamów
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -52,11 +61,20 @@ export default {
 
         return {
           ...prod,
+          slug: p.slug,
           amount: p.amount
         }
       })
 
       return productsInCart
+    }
+  },
+  methods: {
+    incrementProductAmount (slug) {
+      this.$store.commit('incrementProductAmount', slug)
+    },
+    decrementProductAmount (slug) {
+      this.$store.commit('decrementProductAmount', slug)
     }
   }
 }
@@ -96,6 +114,12 @@ export default {
 
       font-weight: bold;
       font-size: 1.3rem;
+
+      small {
+        display: block;
+        color: #656565;
+        font-size: 0.7em;
+      }
     }
 
     .product-amount {
@@ -104,32 +128,36 @@ export default {
       align-items: center;
       font-size: 2.5rem;
 
-      .btn-plus,
-      .btn-minus {
-        margin: 0 15px;
+      .btns {
+        display: flex;
+        flex-direction: column;
 
-        width: 25px;
-        height: 25px;
+        margin-right: 10px;
 
-        font-size: 20px;
-        font-weight: bold;
+        .btn {
+          width: 25px;
+          height: 25px;
 
-        text-align: center;
+          background: #616161;
+          color: white;
 
-        color: white;
-        background: #616161;
+          font-size: 20px;
+          font-weight: bold;
 
-        cursor: pointer;
-      }
+          text-align: center;
+          cursor: pointer;
+          user-select: none;
 
-      .btn-plus {
-        background: #8bc34a;
+          &:not(:last-child){
+            margin-bottom: 8px;
+          }
+        }
       }
     }
 
     .product-price {
       text-align: right;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
 
       .new-price {
         color: #4CAF50;
@@ -145,27 +173,5 @@ export default {
       border-bottom: 1px solid rgb(209, 209, 209);
     }
   }
-}
-
-.btn-cta {
-  display: inline-block;
-  padding: 0.7em 1.5em;
-
-  cursor: pointer;
-
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
-  transform: translateY(0);
-  cursor: pointer;
-
-  transition: all 0.13s ease-out;
-
-  &:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.15);
-    transform: translateY(-3px);
-  }
-
-  background: #e01a3f;
-  color: white;
-  font-size: 1.1em;
 }
 </style>

@@ -18,7 +18,21 @@ export default {
   },
   computed: {
     products () {
-      return this.$store.state.products
+      const products = this.$store.state.products
+      let featured = {}
+
+      Object.keys(products).forEach((slug) => {
+        if (products[slug].featured) {
+          featured = {
+            ...featured,
+            [slug]: {
+              ...products[slug]
+            }
+          }
+        }
+      })
+
+      return featured
     }
   }
 }

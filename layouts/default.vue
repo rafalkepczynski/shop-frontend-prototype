@@ -70,4 +70,27 @@ body,
   padding: 15px 20px;
   margin: 0 auto;
 }
+
+.btn.branded {
+  display: inline-block;
+  padding: 0.7em 1.5em;
+
+  cursor: pointer;
+  user-select: none;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+  transform: translateY(0);
+  cursor: pointer;
+
+  transition: all 0.13s ease-out;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+  }
+
+  background: #e01a3f;
+  color: white;
+  font-size: 1.1em;
+}
 </style>
