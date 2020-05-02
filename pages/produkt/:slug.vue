@@ -64,8 +64,6 @@ export default {
   box-shadow: 0 5px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
 
   .cover {
-    flex: 0;
-
     width: 350px;
     height: auto;
   }
